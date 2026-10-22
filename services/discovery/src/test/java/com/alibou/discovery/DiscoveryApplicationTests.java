@@ -4,10 +4,13 @@ package com.alibou.discovery;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.times;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class DiscoveryApplicationTests {
 
 	@Test

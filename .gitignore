@@ -1,0 +1,21 @@
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# IDE and operating system
+.DS_Store
+.idea/
+.vscode/
+
+# Generated build output
+**/target/
+**/build/
+
+# Diagnostic and generated files
+*.log
+services/customer/cp.txt
+services/customer/dependency-tree.txt
+services/customer/effective-pom.xml
+.backup/

@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Confirmation</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+            color: #333333;
+        }
+
+        .email-wrapper {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            background-color: #0c685b;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        .content h2 {
+            color: #0c685b;
+            margin-top: 0;
+        }
+
+        .content p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .payment-details {
+            margin: 25px 0;
+            border: 1px solid #e1e5e8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .payment-details h3 {
+            background-color: #f1f8f6;
+            color: #0c685b;
+            margin: 0;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .payment-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .payment-details td {
+            padding: 14px 15px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 14px;
+        }
+
+        .payment-details tr:last-child td {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #666666;
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .value {
+            color: #222222;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .success-message {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 25px;
+            text-align: center;
+            color: #777777;
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin: 6px 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                padding: 15px 0;
+            }
+
+            .email-container {
+                width: 95%;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .header {
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .payment-details td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="email-wrapper">
+
+    <div class="email-container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <h1>Payment Confirmation</h1>
+
+            <p>AlibouCoding</p>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <div class="success-message">
+
+                Payment Successful! Thank you for your purchase.
+
+            </div>
+
+            <h2>Hello <span th:text="${customerName}">Customer</span>,</h2>
+
+            <p>
+                We are pleased to confirm that your payment has been
+                successfully received.
+            </p>
+
+            <p>
+                Thank you for choosing our service.
+                Below are your payment details:
+            </p>
+
+            <!-- Payment Details -->
+            <div class="payment-details">
+
+                <h3>Payment Details</h3>
+
+                <table>
+
+                    <tr>
+
+                        <td class="label">
+                            Customer Name
+                        </td>
+
+                        <td class="value"
+                            th:text="${customerName}">
+                            Customer Name
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Amount Paid
+                        </td>
+
+                        <td class="value">
+
+                            <span th:text="${amount}">
+                                0.00
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Order Reference
+                        </td>
+
+                        <td class="value"
+                            th:text="${orderReference}">
+                            ORD-0001
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Payment Status
+                        </td>
+
+                        <td class="value"
+                            style="color: #2e7d32; font-weight: bold;">
+
+                            SUCCESS
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <p>
+                If you have any questions regarding your payment,
+                please feel free to contact our support team.
+            </p>
+
+            <p>
+                Thank you for choosing AlibouCoding.
+            </p>
+
+            <p>
+                Best regards,<br>
+                <strong>AlibouCoding Team</strong>
+            </p>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+
+            <p>
+                This is an automated message.
+                Please do not reply to this email.
+            </p>
+
+            <p>
+                &copy; 2026 AlibouCoding. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

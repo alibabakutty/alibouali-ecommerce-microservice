@@ -1,0 +1,36 @@
+server:
+  port: 8090
+
+spring:
+  mongodb:
+    uri: mongodb://alibou:alibou@localhost:27017/customer?authSource=admin
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+  mongodb:
+    uri: mongodb://alibou:alibou@mongodb:27017/customer?authSource=admin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka/

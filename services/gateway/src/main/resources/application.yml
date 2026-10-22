@@ -1,0 +1,9 @@
+spring:
+  config:
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:8888}
+
+  application:
+    name: gateway-service
+jwt:
+  secret: ${JWT_SECRET:KLCCwb8qqvO+nveS8CjeR3ASkOIRZnpSG8G/4EaxLBTsYBgnecaiQ962Ym/FnROfUBVkXiaNclp6FYLjQ0XjBw==}
+  issuer: authentication-service

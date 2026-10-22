@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmation</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+            color: #333333;
+        }
+
+        .email-wrapper {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            background-color: #0c685b;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        .content h2 {
+            color: #0c685b;
+            margin-top: 0;
+        }
+
+        .content p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .success-message {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .order-details {
+            margin: 25px 0;
+            border: 1px solid #e1e5e8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .order-details h3 {
+            background-color: #f1f8f6;
+            color: #0c685b;
+            margin: 0;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .order-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-details td {
+            padding: 14px 15px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 14px;
+        }
+
+        .order-details tr:last-child td {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #666666;
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .value {
+            color: #222222;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .items-table th {
+            background-color: #0c685b;
+            color: #ffffff;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .items-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 13px;
+        }
+
+        .items-table .amount {
+            text-align: right;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            color: #0c685b;
+            font-size: 15px;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 25px;
+            text-align: center;
+            color: #777777;
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin: 6px 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                padding: 15px 0;
+            }
+
+            .email-container {
+                width: 95%;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .header {
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .items-table th,
+            .items-table td {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .order-details td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="email-wrapper">
+
+    <div class="email-container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <h1>Order Confirmation</h1>
+
+            <p>AlibouCoding</p>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <div class="success-message">
+
+                Your order has been placed successfully!
+
+            </div>
+
+            <h2>
+                Hello
+                <span th:text="${customerName}">Customer</span>,
+            </h2>
+
+            <p>
+                Thank you for your order!
+                We are happy to confirm that your order has been
+                successfully placed.
+            </p>
+
+            <p>
+                Here are your order details:
+            </p>
+
+            <!-- Order Details -->
+            <div class="order-details">
+
+                <h3>Order Details</h3>
+
+                <table>
+
+                    <tr>
+
+                        <td class="label">
+                            Order Reference
+                        </td>
+
+                        <td class="value"
+                            th:text="${orderReference}">
+                            ORD-0001
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Customer Name
+                        </td>
+
+                        <td class="value"
+                            th:text="${customerName}">
+                            Customer Name
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Order Date
+                        </td>
+
+                        <td class="value"
+                            th:text="${orderDate}">
+                            16 September 2026
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Order Status
+                        </td>
+
+                        <td class="value"
+                            style="color: #2e7d32; font-weight: bold;">
+
+                            CONFIRMED
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <!-- Order Items -->
+            <div class="order-details">
+
+                <h3>Order Items</h3>
+
+                <table class="items-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th class="amount">
+                            Price
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="product : ${products}">
+
+                        <td th:text="${product.name}">
+                            Product Name
+                        </td>
+
+                        <td th:text="${product.quantity}">
+                            1
+                        </td>
+
+                        <td class="amount"
+                            th:text="${product.price}">
+                            0.00
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Total Amount -->
+            <div class="order-details">
+
+                <h3>Order Summary</h3>
+
+                <table>
+
+                    <tr>
+
+                        <td class="label">
+                            Subtotal
+                        </td>
+
+                        <td class="value"
+                            th:text="${subtotal}">
+                            0.00
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Shipping Charges
+                        </td>
+
+                        <td class="value"
+                            th:text="${shippingCharges}">
+                            0.00
+                        </td>
+
+                    </tr>
+
+                    <tr class="total-row">
+
+                        <td class="label">
+                            Total Amount
+                        </td>
+
+                        <td class="value"
+                            th:text="${totalAmount}">
+                            0.00
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <p>
+                We will notify you once your order has been shipped.
+            </p>
+
+            <p>
+                If you have any questions regarding your order,
+                please feel free to contact our support team.
+            </p>
+
+            <p>
+                Thank you for choosing AlibouCoding.
+            </p>
+
+            <p>
+                Best regards,<br>
+                <strong>AlibouCoding Team</strong>
+            </p>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+
+            <p>
+                This is an automated message.
+                Please do not reply to this email.
+            </p>
+
+            <p>
+                &copy; 2026 AlibouCoding. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

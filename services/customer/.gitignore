@@ -1,0 +1,70 @@
+# Maven
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Keep nested source build directories if required
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Java
+*.class
+hs_err_pid*
+replay_pid*
+
+# Spring Boot / local configuration
+application-local.yml
+application-local.yaml
+application-local.properties
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# STS / Eclipse
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Gradle / general build output
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test reports and coverage output
+**/surefire-reports/
+**/failsafe-reports/
+**/site/
+**/jacoco.exec
+**/jacoco.xml
+
+# Temporary files
+*.tmp
+*.swp

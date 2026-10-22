@@ -1,0 +1,60 @@
+
+name: Ecommerce Microservices CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build and test ${{ matrix.service }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        service:
+          - services/authentication-service
+          - services/config-server
+          - services/customer
+          - services/discovery
+          - services/gateway
+          - services/notification
+          - services/order
+          - services/payment
+          - services/product
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/*/pom.xml
+
+      - name: Make Maven wrapper executable
+        working-directory: ${{ matrix.service }}
+        run: chmod +x mvnw
+
+      - name: Build and run tests
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw --batch-mode --no-transfer-progress clean verify
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-${{ strategy.job-index }}
+          path: ${{ matrix.service }}/target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 7

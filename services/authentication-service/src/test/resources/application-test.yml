@@ -1,0 +1,12 @@
+
+jwt:
+  secret: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+  expiration: 86400000
+  issuer: authentication-service
+
+spring:
+  cloud:
+    config:
+      enabled: false
+  config:
+    import: "optional:configserver:"

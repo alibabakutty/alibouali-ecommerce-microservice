@@ -48,6 +48,9 @@ jobs:
 
       - name: Build and run tests
         working-directory: ${{ matrix.service }}
+        env:
+          SPRING_CLOUD_CONFIG_ENABLED: "false"
+          SPRING_CONFIG_IMPORT: "optional:configserver:"
         run: ./mvnw --batch-mode --no-transfer-progress clean verify
 
       - name: Upload test reports

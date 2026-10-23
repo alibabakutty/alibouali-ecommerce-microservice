@@ -28,6 +28,22 @@ pipeline {
             }
         }
 
+        stage('Docker Preflight') {
+            steps {
+                sh '''
+                    set -eu
+                    echo "Docker executable:"
+                    command -v docker
+                    echo "Docker version:"
+                    docker version
+                    echo "Docker Compose version:"
+                    docker compose version
+                    echo "Validating Compose configuration:"
+                    docker compose config --quiet
+                '''
+            }
+        }
+
         stage('Authentication Service') {
             steps {
                 dir('services/authentication-service') {

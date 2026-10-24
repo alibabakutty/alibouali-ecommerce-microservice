@@ -117,6 +117,22 @@ services:
     networks:
       - microservices-net
 
+  jenkins:
+    build:
+      context: ./jenkins
+    image: custom-jenkins:jdk25-docker
+    container_name: jenkins
+    restart: unless-stopped
+    ports:
+      - "8181:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - microservices-net
+
+
   # =========================
   # SPRING BOOT SERVICES
   # =========================
@@ -286,3 +302,4 @@ volumes:
   postgres:
   pgadmin:
   mongo:
+  jenkins_home:

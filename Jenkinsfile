@@ -16,7 +16,7 @@ pipeline {
         stage('Verify Java and Maven') {
             steps {
                 sh '''
-                    export JAVA_HOME=$(/usr/libexec/java_home -v 25)
+                    export JAVA_HOME=/opt/java/openjdk
                     export PATH="$JAVA_HOME/bin:$PATH"
 
                     echo "Java version:"
@@ -47,7 +47,7 @@ pipeline {
         stage('Authentication Service') {
             steps {
                 dir('services/authentication-service') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -55,7 +55,7 @@ pipeline {
         stage('Config Server') {
             steps {
                 dir('services/config-server') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -63,7 +63,7 @@ pipeline {
         stage('Customer Service') {
             steps {
                 dir('services/customer') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -71,7 +71,7 @@ pipeline {
         stage('Discovery Service') {
             steps {
                 dir('services/discovery') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -79,7 +79,7 @@ pipeline {
         stage('Gateway Service') {
             steps {
                 dir('services/gateway') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -87,7 +87,7 @@ pipeline {
         stage('Notification Service') {
             steps {
                 dir('services/notification') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -95,7 +95,7 @@ pipeline {
         stage('Order Service') {
             steps {
                 dir('services/order') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -103,7 +103,7 @@ pipeline {
         stage('Payment Service') {
             steps {
                 dir('services/payment') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }
@@ -111,7 +111,7 @@ pipeline {
         stage('Product Service') {
             steps {
                 dir('services/product') {
-                    sh 'export JAVA_HOME=$(/usr/libexec/java_home -v 25); export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
+                    sh 'export JAVA_HOME=/opt/java/openjdk; export PATH="$JAVA_HOME/bin:$PATH"; ./mvnw --batch-mode --no-transfer-progress clean verify'
                 }
             }
         }

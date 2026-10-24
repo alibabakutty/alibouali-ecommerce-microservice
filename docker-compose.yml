@@ -118,6 +118,7 @@ services:
       - microservices-net
 
   jenkins:
+    user: "0:0"
     build:
       context: ./jenkins
     image: custom-jenkins:jdk25-docker
